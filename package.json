@@ -2,8 +2,7 @@
   "name": "mern-infrastructure",
   "private": true,
   "version": "0.0.0",
-  "_comment1": "changed from module to commonjs to work with vite",
-  "type": "commonjs",
+  "_comment1": "changed from module to commonjs to work with vite - removing 'type' as a property seems to also avoid the error",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
