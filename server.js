@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'dist')))
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
+// ? since this is based on what is in the "build" folder, it will only be updated after running build command
 // * will catch:
 // * A user types a path into the address bar and presses enter.
 // * The user refreshes the browser.
