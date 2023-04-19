@@ -1,3 +1,6 @@
+// Initial configuration
+require('dotenv').config()  // env variables
+require('./config/db')  // connect to db
 const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
