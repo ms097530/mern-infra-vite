@@ -10,14 +10,20 @@ export default function SignUpForm()
         error: ''
     })
 
-    const handleSubmit = () => { }
+    const handleSubmit = (e) => 
+    {
+        e.preventDefault()
+        console.log('SUBMITTING')
+        console.log(formData)
+    }
+
     const handleChange = (e) =>
     {
         setFormData(prevData =>
         {
             // keep previous data and use name of field that event is firing from to target matching data property
             // typed value is then applied to matching data property
-            return { ...prevData, [e.target.name]: e.target.value }
+            return { ...prevData, [e.target.name]: e.target.value, error: '' }
         })
     }
 
