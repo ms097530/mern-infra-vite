@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 export default function SignUpForm()
 {
+    // state for controlling inputs
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -12,6 +13,8 @@ export default function SignUpForm()
 
     const handleSubmit = (e) => 
     {
+        // prevents page from refreshing - control what happens when form is submitted
+        // ! refreshing would cause loss of state - want to avoid in SPA
         e.preventDefault()
         console.log('SUBMITTING')
         console.log(formData)
@@ -27,6 +30,8 @@ export default function SignUpForm()
         })
     }
 
+    // * boolean to make sure password and confirmation input match
+    // * disable submit button if they don't match
     const disable = formData.password !== formData.confirm
 
     return (
@@ -46,6 +51,7 @@ export default function SignUpForm()
                         value={formData.email}
                         onChange={handleChange} />
                     <label htmlFor="password">Password</label>
+
                     <input type="password"
                         name="password"
                         id="password"
@@ -57,6 +63,7 @@ export default function SignUpForm()
                         id="confirm"
                         value={formData.confirm}
                         onChange={handleChange} />
+
                     <button type="submit" disabled={disable}>SIGN UP</button>
                 </form>
             </div>
