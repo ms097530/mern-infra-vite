@@ -11,7 +11,15 @@ export default function SignUpForm()
     })
 
     const handleSubmit = () => { }
-    const handleChange = () => { }
+    const handleChange = (e) =>
+    {
+        setFormData(prevData =>
+        {
+            // keep previous data and use name of field that event is firing from to target matching data property
+            // typed value is then applied to matching data property
+            return { ...prevData, [e.target.name]: e.target.value }
+        })
+    }
 
     const disable = formData.password !== formData.confirm
 
