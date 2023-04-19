@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 import NewOrderPage from './pages/NewOrderPage'
 import AuthPage from './pages/AuthPage'
@@ -13,7 +14,21 @@ function App()
   return (
     <main className="App">
       <h1>SEI Cafe</h1>
-      {user ? <NewOrderPage /> : <AuthPage />}
+      {/* if user is truthy, the following routes are available, otherwise send user to AuthPage */}
+      {
+        user ?
+          <Routes>
+            <Route path='/orders/new' element={<NewOrderPage />} />
+            <Route path='/orders' element={<OrderHistoryPage />} />
+          </Routes>
+          :
+          <AuthPage />
+      }
+      {/* <Routes>
+        <Route path='/orders/new' element={<NewOrderPage />} />
+        <Route path='/orders' element={<OrderHistoryPage />} />
+      </Routes>
+      {user ? <NewOrderPage /> : <AuthPage />} */}
     </main>
   )
 }
