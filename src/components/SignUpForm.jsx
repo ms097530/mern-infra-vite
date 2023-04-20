@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { signUp } from '../utilities/users-service'
 
 export default function SignUpForm()
 {
@@ -21,7 +22,14 @@ export default function SignUpForm()
         {
             console.log('SUBMITTING')
             console.log(formData)
-            throw new Error('AHHH AN ERROR')
+            // necessary information for backend
+            const userData = {
+                name: formData.name,
+                email: formData.email,
+                password: formData.password
+            }
+            // returns a token with the user info
+            const user = await signUp(userData)
         }
         catch (err)
         {
