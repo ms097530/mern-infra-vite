@@ -11,13 +11,22 @@ export default function SignUpForm()
         error: ''
     })
 
-    const handleSubmit = (e) => 
+    const handleSubmit = async (e) => 
     {
         // prevents page from refreshing - control what happens when form is submitted
         // ! refreshing would cause loss of state - want to avoid in SPA
         e.preventDefault()
-        console.log('SUBMITTING')
-        console.log(formData)
+
+        try
+        {
+            console.log('SUBMITTING')
+            console.log(formData)
+            throw new Error('AHHH AN ERROR')
+        }
+        catch (err)
+        {
+            setFormData(prevData => ({ ...prevData, error: 'Sign up failed - try again' }))
+        }
     }
 
     const handleChange = (e) =>
@@ -37,32 +46,38 @@ export default function SignUpForm()
     return (
         <div>
             <div className='form-container'>
-                <form autoComplete='off' onSubmit={handleSubmit} >
+                <form autoComplete='off' onSubmit={handleSubmit}>
+
                     <label htmlFor="name">Name</label>
                     <input type="text"
                         name="name"
                         id="name"
                         value={formData.name}
-                        onChange={handleChange} />
+                        onChange={handleChange}
+                        required />
                     <label htmlFor="email">Email</label>
                     <input type="email"
                         name="email"
                         id="email"
                         value={formData.email}
-                        onChange={handleChange} />
-                    <label htmlFor="password">Password</label>
+                        onChange={handleChange}
+                        required />
 
+                    {/* Password-related inputs */}
+                    <label htmlFor="password">Password</label>
                     <input type="password"
                         name="password"
                         id="password"
                         value={formData.password}
-                        onChange={handleChange} />
+                        onChange={handleChange}
+                        required />
                     <label htmlFor="confirm">Confirm</label>
                     <input type="password"
                         name="confirm"
                         id="confirm"
                         value={formData.confirm}
-                        onChange={handleChange} />
+                        onChange={handleChange}
+                        required />
 
                     <button type="submit" disabled={disable}>SIGN UP</button>
                 </form>
