@@ -15,6 +15,7 @@ export async function signUp(userData)
             // and assigned to a body property on the options object
             body: JSON.stringify(userData)
         })
+
     // Check if request was successful
     // ! fetch method will not raise an error unless there's a network failure... so we need to check res.ok property to see if we got a successful response
     if (res.ok)
