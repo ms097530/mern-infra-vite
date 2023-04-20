@@ -6,6 +6,8 @@ const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
 
+const userRoutes = require('./routes/api/users')
+
 // development port: 4000
 // in production, we'll have a PORT number set via environment variables
 const PORT = process.env.PORT || 4000
@@ -23,6 +25,7 @@ app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // Put API routes here, before the "catch all" route
+app.use('/api/users', userRoutes)
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
