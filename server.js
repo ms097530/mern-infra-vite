@@ -25,6 +25,8 @@ app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'dist')))
 
 // Put API routes here, before the "catch all" route
+
+// * can skip require up top and do require in place of userRoutes if desired
 app.use('/api/users', userRoutes)
 
 // The following "catch all" route (note the *) is necessary
