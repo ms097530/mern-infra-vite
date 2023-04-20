@@ -1,11 +1,7 @@
 const express = require('express')
 const router = express.Router()
-// const usersCtrl = require('../../controllers/users')
+const usersCtrl = require('../../controllers/api/users')
 
-router.post('/', (req, res) =>
-{
-    console.log(req.body)
-    res.send(req.body)
-})
+router.post('/', usersCtrl.create)
 
 module.exports = router
