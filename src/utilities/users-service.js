@@ -14,8 +14,9 @@ export function getToken()
     const token = localStorage.getItem('token')
     if (!token) return null
 
-    // TODO: update with non-deprecated method
-    const payload = JSON.parse(atob(token.split('.')[1]))
+    // ? calling on frontend, NOT with Node, so not deprecated
+    // * use window object to remove deprecation message
+    const payload = JSON.parse(window.atob(token.split('.')[1]))
     console.log(payload)
 
     // if token is expired
@@ -34,8 +35,9 @@ export function getUser()
 {
     const token = getToken()
 
-    // TODO: update with non-deprecated method
-    return token ? JSON.parse(atob(token.split('.')[1])).user : null
+    // ? calling on frontend, NOT with Node, so not deprecated
+    // * use window object to remove deprecation message
+    return token ? JSON.parse(window.atob(token.split('.')[1])).user : null
 }
 
 export const signUp = async (userData) =>
