@@ -7,6 +7,37 @@ import * as usersAPI from './users-api'
 // * ==========================================
 // ? handleSubmit < --> [signUp]-users-service < --> [signUp]-users-api < -Internet -> server.js(Express)
 
+
+export function getToken()
+{
+    // getItem returns null if there's no string
+    const token = localStorage.getItem('token')
+    if (!token) return null
+
+    // TODO: update with non-deprecated method
+    const payload = JSON.parse(atob(token.split('.')[1]))
+    console.log(payload)
+
+    // if token is expired
+    if (payload.exp < Date.now() / 1000)
+    {
+        localStorage.removeItem('token')
+        return null
+    }
+
+    // token is valid
+    return token
+}
+
+// * Get User
+export function getUser()
+{
+    const token = getToken()
+
+    // TODO: update with non-deprecated method
+    return token ? JSON.parse(atob(token.split('.')[1])).user : null
+}
+
 export const signUp = async (userData) =>
 {
     console.log('users-service signUp')
