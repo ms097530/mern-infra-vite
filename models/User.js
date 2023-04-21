@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
+// * determines how much processing time it will take to perform the hash
 const SALT_ROUNDS = 6
 
 // unique: Although technically not a validator, unique: true creates a unique index in the database which will trigger an error if violated.
@@ -36,9 +37,11 @@ const userSchema = new Schema(
         }
     });
 
+// * Pre Hook
 userSchema.pre('save', async function (next)
 {
     // * 'this' is the user doc
+    // * if password was NOT modified continue to the next middleware
     if (!this.isModified('password')) return next()
 
     // * update the password with the computer hash
