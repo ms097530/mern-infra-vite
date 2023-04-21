@@ -25,6 +25,7 @@ export default function LoginForm({ setUser })
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
       // * passes credentials: { email: string, password: string }
+      // * these come from state, which controls form inputs
       const user = await usersService.login(credentials)
       setUser(user)
     } catch {

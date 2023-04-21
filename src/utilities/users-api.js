@@ -35,6 +35,8 @@ export async function login(credentials)
 {
     console.log('users-api login')
 
+    // send post request to login route on backend
+    // credentials must be stringified
     const res = await fetch(BASE_URL + '/login',
         {
             method: 'POST',
