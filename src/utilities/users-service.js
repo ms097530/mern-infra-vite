@@ -14,5 +14,6 @@ export const signUp = async (userData) =>
     // which will ultimately return a JSON Web Token (JWT)
     const token = await usersAPI.signUp(userData)
     // Baby step by returning whatever is sent back by the server
+    console.log('returning token')
     return token
 }

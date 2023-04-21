@@ -21,10 +21,12 @@ export async function signUp(userData)
     if (res.ok)
     {
         // res.json() will resolve to the JWT
+        console.log('res is okay')
         return res.json()
     }
     else
     {
+        console.log('got an error in users-api')
         throw new Error('Invalid Sign Up')
     }
 }
