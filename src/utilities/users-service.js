@@ -7,7 +7,7 @@ import * as usersAPI from './users-api'
 // * ==========================================
 // ? handleSubmit < --> [signUp]-users-service < --> [signUp]-users-api < -Internet -> server.js(Express)
 
-
+// * Get JWT
 export function getToken()
 {
     // getItem returns null if there's no string

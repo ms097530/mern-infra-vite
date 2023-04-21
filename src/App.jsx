@@ -6,11 +6,13 @@ import AuthPage from './pages/AuthPage'
 import OrderHistoryPage from './pages/OrderHistoryPage'
 import NavBar from './components/NavBar'
 
+import { getUser } from './utilities/users-service'
+
 import './App.css'
 
 function App()
 {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(getUser())
 
   return (
     <main className="App">
@@ -18,7 +20,7 @@ function App()
       {
         user ?
           <>
-            <NavBar />
+            <NavBar user={user.name} />
             <Routes>
               <Route path='/orders/new' element={<NewOrderPage />} />
               <Route path='/orders' element={<OrderHistoryPage />} />
