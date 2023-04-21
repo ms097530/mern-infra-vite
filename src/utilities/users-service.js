@@ -42,6 +42,7 @@ export function getUser()
     return token ? JSON.parse(window.atob(token.split('.')[1])).user : null
 }
 
+// * Sign up user
 export const signUp = async (userData) =>
 {
     console.log('users-service signUp')
@@ -53,4 +54,10 @@ export const signUp = async (userData) =>
     console.log('returning token')
 
     return getUser()
+}
+
+// * Logout user
+export function logOut()
+{
+    localStorage.removeItem('token')
 }

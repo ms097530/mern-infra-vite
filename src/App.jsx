@@ -20,7 +20,7 @@ function App()
       {
         user ?
           <>
-            <NavBar user={user.name} />
+            <NavBar user={user} setUser={setUser} />
             <Routes>
               <Route path='/orders/new' element={<NewOrderPage />} />
               <Route path='/orders' element={<OrderHistoryPage />} />
