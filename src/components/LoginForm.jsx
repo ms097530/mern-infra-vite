@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import * as usersService from '../../utilities/users-service'
+import * as usersService from '../utilities/users-service'
 
 export default function LoginForm({ setUser })
 {
@@ -24,6 +24,7 @@ export default function LoginForm({ setUser })
       // The promise returned by the signUp service method
       // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
+      // * passes credentials: { email: string, password: string }
       const user = await usersService.login(credentials)
       setUser(user)
     } catch {
@@ -42,7 +43,7 @@ export default function LoginForm({ setUser })
           <button type="submit">LOG IN</button>
         </form>
       </div>
-      <p className="error-message">&nbsp{error}</p>
+      <p className="error-message">&nbsp;{error}</p>
     </div>
   )
 }
