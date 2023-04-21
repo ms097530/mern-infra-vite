@@ -7,6 +7,8 @@ import * as usersAPI from './users-api'
 // * ==========================================
 // ? handleSubmit < --> [signUp]-users-service < --> [signUp]-users-api < -Internet -> server.js(Express)
 
+// ! Currently, if user gets deleted or altered, JWT will store stale user data
+
 // * Get JWT
 export function getToken()
 {
@@ -49,5 +51,6 @@ export const signUp = async (userData) =>
     // saves token to localStorage
     localStorage.setItem('token', token)
     console.log('returning token')
-    return token
+
+    return getUser()
 }
