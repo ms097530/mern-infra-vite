@@ -10,10 +10,11 @@ import * as usersAPI from './users-api'
 export const signUp = async (userData) =>
 {
     console.log('users-service signUp')
-    // Delegate the network request code to the users-api.js API module
+    // Delegate the network request code to the users-api.js API 
     // which will ultimately return a JSON Web Token (JWT)
     const token = await usersAPI.signUp(userData)
-    // Baby step by returning whatever is sent back by the server
+    // saves token to localStorage
+    localStorage.setItem('token', token)
     console.log('returning token')
     return token
 }

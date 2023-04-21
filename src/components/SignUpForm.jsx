@@ -31,6 +31,7 @@ export default function SignUpForm()
             // returns a token with the user info
             const user = await signUp(userData)
             console.log(user)
+            console.log(user.split('.'))
         }
         catch (err)
         {
