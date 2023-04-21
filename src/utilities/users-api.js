@@ -30,3 +30,26 @@ export async function signUp(userData)
         throw new Error('Invalid Sign Up')
     }
 }
+
+export async function login(credentials)
+{
+    console.log('users-api login')
+
+    const res = await fetch(BASE_URL + '/login',
+        {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(credentials)
+        })
+
+    if (res.ok)
+    {
+        console.log('res is okay')
+        return res.json()
+    }
+    else
+    {
+        console.log('got an error in users-api')
+        throw new Error('Unable to login')
+    }
+}

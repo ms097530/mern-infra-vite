@@ -43,7 +43,7 @@ export function getUser()
 }
 
 // * Sign up user
-export const signUp = async (userData) =>
+export async function signUp(userData)
 {
     console.log('users-service signUp')
     // Delegate the network request code to the users-api.js API 
@@ -51,7 +51,6 @@ export const signUp = async (userData) =>
     const token = await usersAPI.signUp(userData)
     // saves token to localStorage
     localStorage.setItem('token', token)
-    console.log('returning token')
 
     return getUser()
 }
@@ -60,4 +59,15 @@ export const signUp = async (userData) =>
 export function logOut()
 {
     localStorage.removeItem('token')
+}
+
+// * Login user
+export async function login(credentials)
+{
+    console.log('users-service login')
+
+    const token = await usersAPI.login(credentials)
+    localStorage.setItem('token', token)
+
+    return getUser()
 }

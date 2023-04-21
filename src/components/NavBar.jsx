@@ -6,6 +6,7 @@ export default function NavBar({ user, setUser })
 {
     const handleLogout = () =>
     {
+        logOut()
         setUser(null)
     }
 
