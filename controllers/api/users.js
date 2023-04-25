@@ -36,8 +36,6 @@ async function login(req, res)
     {
         const LOGIN_ERROR_MSG = 'Email or password did not match'
 
-        console.log('LOGGING IN')
-        console.log(req.body)
         const user = await User.findOne({ email: req.body.email })
         console.log('USER in login:', user)
 
