@@ -67,6 +67,8 @@ async function login(req, res)
 
 async function checkToken(req, res)
 {
+    // THIS DOES NOT USE checkToken from config
+    console.log('CHECK TOKEN CONTROLLER')
     console.log(req.user)
     console.log(req.exp)
     res.json(req.exp)

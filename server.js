@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'dist')))
 
 // * My middleware
 // ? checks if token was sent and sets a user property on req (req.user)
+// ? this middleware runs on every request
 app.use(require('./config/checkToken'))
 
 // Put API routes here, before the "catch all" route
