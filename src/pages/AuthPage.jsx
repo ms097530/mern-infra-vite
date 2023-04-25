@@ -12,16 +12,17 @@ export default function AuthPage({ setUser })
     }
 
     return (
-        <div>
-            <button onClick={toggleLogin}>
+        <main className="AuthPage">
+            <h3 onClick={toggleLogin}>
                 {!showLogin ? 'Login' : 'Sign Up'}
-            </button>
+            </h3>
+
             {
                 !showLogin && <SignUpForm setUser={setUser} />
             }
             {
                 showLogin && <LoginForm setUser={setUser} />
             }
-        </div>
+        </main>
     )
 }
