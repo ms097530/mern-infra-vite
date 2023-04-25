@@ -24,6 +24,10 @@ app.use(express.json())
 app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'dist')))
 
+// * My middleware
+// ? checks if token was sent and sets a user property on req (req.user)
+app.use(require('./config/checkToken'))
+
 // Put API routes here, before the "catch all" route
 
 // * can skip require up top and do require in place of userRoutes if desired

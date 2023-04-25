@@ -19,7 +19,7 @@ export function getToken()
     // ? calling on frontend, NOT with Node, so not deprecated
     // * use window object to remove deprecation message
     const payload = JSON.parse(window.atob(token.split('.')[1]))
-    console.log(payload)
+    // console.log(payload)
 
     // if token is expired
     if (payload.exp < Date.now() / 1000)
