@@ -71,3 +71,13 @@ export async function login(credentials)
 
     return getUser()
 }
+
+export async function checkToken()
+{
+    return usersAPI.checkToken()
+        // expecting dateStr from server
+        .then(dateStr =>
+        {
+            return new Date(dateStr)
+        })
+}
