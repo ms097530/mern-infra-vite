@@ -5,6 +5,7 @@ const express = require('express')
 const path = require('path')
 const favicon = require('serve-favicon')
 const logger = require('morgan')
+const ensureLoggedIn = require('./config/ensureLoggedIn')
 
 const userRoutes = require('./routes/api/users')
 
@@ -33,6 +34,9 @@ app.use(require('./config/checkToken'))
 
 // * can skip require up top and do require in place of userRoutes if desired
 app.use('/api/users', userRoutes)
+// * protect all routes dealing with line items and orders
+app.use('/api/items', ensureLoggedIn, require('./routes/api/items'));
+app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

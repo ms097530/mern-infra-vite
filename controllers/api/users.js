@@ -12,19 +12,22 @@ async function create(req, res)
 {
     try
     {
+        console.log('CREATE BODY:', req.body)
         //* creating a new user
         const user = await User.create(req.body);
         console.log('USER in create:', user);
 
         //* creating a new jwt
+        // token will be a string
         const token = createJWT(user);
-
-        res.json(token);
+        // can serialize a string this way
+        res.status(200).json(token);
 
     }
     catch (error)
     {
         console.log(error);
+        // probably a dup email
         res.status(400).json(error)
     }
 }
