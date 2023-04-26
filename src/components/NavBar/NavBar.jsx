@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { logOut } from '../utilities/users-service'
+import { logOut } from '../../utilities/users-service'
 
 export default function NavBar({ user, setUser })
 {

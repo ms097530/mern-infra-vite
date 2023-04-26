@@ -1,6 +1,9 @@
 import { useState } from 'react'
-import SignUpForm from '../components/SignUpForm'
-import LoginForm from '../components/LoginForm'
+import SignUpForm from '../../components/SignUpForm/SignUpForm'
+import LoginForm from '../../components/LoginForm/LoginForm'
+import Logo from '../../components/Logo/Logo'
+
+import styles from './AuthPage.module.css'
 
 export default function AuthPage({ setUser })
 {
@@ -12,10 +15,14 @@ export default function AuthPage({ setUser })
     }
 
     return (
-        <main className="AuthPage">
-            <h3 onClick={toggleLogin}>
-                {!showLogin ? 'Login' : 'Sign Up'}
-            </h3>
+        <main className={styles.AuthPage}>
+
+            <div>
+                <Logo />
+                <h3 onClick={toggleLogin}>
+                    {!showLogin ? 'Login' : 'Sign Up'}
+                </h3>
+            </div>
 
             {
                 !showLogin && <SignUpForm setUser={setUser} />
